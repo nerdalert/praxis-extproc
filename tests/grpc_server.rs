@@ -2456,7 +2456,7 @@ async fn envoy_routed_anthropic_request_translates_body_and_path() {
     );
 }
 
-/// Request-phase conditions must keep OpenAI bodies out of the Anthropic hook.
+/// Request-phase conditions must keep `OpenAI` bodies out of the Anthropic hook.
 #[tokio::test]
 async fn envoy_routed_openai_request_preserves_body() {
     let (mut client, _shutdown) = start_server(ENVOY_ANTHROPIC_CONFIG).await;
