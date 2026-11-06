@@ -1,0 +1,29 @@
+name: Native Grid llm-d Kind E2E
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_ref:
+        description: Exact feature branch or commit to qualify
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  registration-only:
+    name: Dispatch registration only
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - name: Explain the implementation ref
+        shell: bash
+        env:
+          SOURCE_REF: ${{ inputs.source_ref }}
+        run: |
+          printf 'This default-branch workflow only registers the dispatch path.\n'
+          printf 'Select feat/grid-llmd-kind-e2e as the workflow ref to run the qualification.\n'
+          printf 'Requested source ref: %s\n' "$SOURCE_REF"
